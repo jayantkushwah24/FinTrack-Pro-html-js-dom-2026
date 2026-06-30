@@ -19,11 +19,16 @@ loginForm.addEventListener("submit", (event) => {
   let userExist = registeredUsers.find(
     (user) => user.username === usernameValue,
   );
-  
+
   if (userExist) {
     if (userExist.password === passwordValue) {
       window.location.href = "index.html";
       localStorage.setItem("isLoggedIn", "true");
+      localStorage.setItem("theme", "light");
+      localStorage.setItem(
+        "user",
+        JSON.stringify({ username: usernameValue, currency: "$" }),
+      );
     } else {
       alert("Please enter correct password");
       return;

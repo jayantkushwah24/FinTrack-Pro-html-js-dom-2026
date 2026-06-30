@@ -12,7 +12,9 @@
       <!-- sidebar -->
       <div class="sidebar">
         <div class="company-name">
-          <div class="logo"></div>
+          <div class="logo">
+            <img src="Images/money.png" alt="logo" height="30" />
+          </div>
           <div class="text">
             <div class="large-text">FinTrack Pro</div>
             <div class="small-text">Enterprise Finance</div>
@@ -23,13 +25,43 @@
           <div class="dashboard">Settings</div>
         </div>
         <div class="button">
-          <button id="add-tran-btn"></button>
+          <button id="add-trans-btn">+ Add Transactions</button>
         </div>
       </div>
 
+      <!-- Add Transactions form -->
+      <form id="add-trans-form" style="display: none">
+        <div>Add Transactions</div>
+        <div>x</div>
+        <label for="type">Type</label><br />
+        <select name="type" id="select-trans-type">
+          <option value="expense">Expense</option>
+          <option value="income">Income</option></select
+        ><br />
+        <label for="desc">Description</label><br />
+        <input type="text" placeholder="e.g. Amazon, Salary, Coffee" /><br />
+        <label for="amount">Amount</label>
+        <input type="number" /><br />
+        <label for="date">Date</label>
+        <input type="date" /><br />
+        <label for="category">Category</label><br />
+        <select name="category" id="category">
+          <option value="" disabled selected>Select a category</option>
+          <option value="food-dining">Food & Dining</option>
+          <option value="shopping">Shoppping</option>
+          <option value="recharge-bills">Recharge & Bills</option>
+          <option value="petrol-auto">Petrol & Auto</option>
+          <option value="utilities">Utilities</option>
+          <option value="salary">Salary</option>
+          <option value="entertainment">Entertainment</option>
+          <option value="others">Others</option></select
+        ><br />
+        <button>Save Transaction</button>
+      </form>
+
       <!-- topbar -->
       <nav class="topbar">
-        <div class="username">jayant8</div>
+        <div class="username" id="topbar-username"></div>
         <div class="button">
           <button id="logout-btn">Logout</button>
         </div>
@@ -112,6 +144,10 @@
         </div>
       </div>
     </main>
-    <script src="script.js"></script>
+    <script src="JS Files/auth.js"></script>
+    <script src="JS Files/sidebar.js"></script>
+    <script src="JS Files/topbar.js"></script>
+    <script src="JS Files/cashflowChart.js"></script>
+    <script src="JS Files/addTransForm.js"></script>
   </body>
 </html>

@@ -1,7 +1,3 @@
-let isLoggedIn = JSON.parse(localStorage.getItem("isLoggedIn")) || false;
-if (!isLoggedIn) {
-  window.location.href = "login.html";
-}
 
 const ctx = document.querySelector("#cashflow-chart");
 
@@ -25,3 +21,4 @@ new Chart(ctx, {
     },
   },
 });
+
