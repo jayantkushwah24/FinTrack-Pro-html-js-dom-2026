@@ -5,11 +5,111 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FinTrack Pro</title>
     <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
     <main>
-      <div class="navbar">
-        <button>Logout</button>
+      <!-- sidebar -->
+      <div class="sidebar">
+        <div class="company-name">
+          <div class="logo"></div>
+          <div class="text">
+            <div class="large-text">FinTrack Pro</div>
+            <div class="small-text">Enterprise Finance</div>
+          </div>
+        </div>
+        <div class="nav-items">
+          <div class="dashboard">Dashboard</div>
+          <div class="dashboard">Settings</div>
+        </div>
+        <div class="button">
+          <button id="add-tran-btn"></button>
+        </div>
+      </div>
+
+      <!-- topbar -->
+      <nav class="topbar">
+        <div class="username">jayant8</div>
+        <div class="button">
+          <button id="logout-btn">Logout</button>
+        </div>
+      </nav>
+
+      <!-- main content -->
+      <div class="main-content">
+        <!-- page heading -->
+        <div class="page-header">
+          <div class="large-text">Financial Overview</div>
+          <div class="small-text">Real-time tracking application</div>
+        </div>
+
+        <!-- Overview cards -->
+        <div class="overview-cards">
+          <div class="current-bal-card">
+            <div class="svg"></div>
+            <div class="title">Current Balance</div>
+            <div id="display-balance">$0.00</div>
+          </div>
+          <div class="total-income-card">
+            <div class="svg"></div>
+            <div class="title">Total Income</div>
+            <div id="display-total-income">$0.00</div>
+          </div>
+          <div class="total-expense-card">
+            <div class="svg"></div>
+            <div class="title">Total Expense</div>
+            <div id="display-total-expense">$0.00</div>
+          </div>
+          <div class="total-trans-card">
+            <div class="svg"></div>
+            <div class="title">Total Transactions</div>
+            <div id="display-total-trans">$0.00</div>
+          </div>
+        </div>
+
+        <!-- Cash Flow Analysis card -->
+        <div class="analysis-chart-card">
+          <div class="heading">Cash Flow Analysis</div>
+          <div class="chart">
+            <canvas id="cashflow-chart" width="400" height="100"></canvas>
+          </div>
+        </div>
+
+        <!-- Preferences card -->
+        <div class="preference-card">
+          <div class="heading">Preferences</div>
+          <div class="dark-mode">
+            <div class="text">Dark Mode</div>
+          </div>
+          <hr />
+          <div class="reset-all-data">
+            <button id="reset-btn">Reset All Data</button>
+          </div>
+        </div>
+
+        <!-- All Transactions card -->
+        <div class="all-trans-card">
+          <form action="">
+            <input type="search" placeholder="search" />
+            <select name="filter" id="filter-types">
+              <option value="all">All Types</option>
+              <option value="income">Income Only</option>
+              <option value="expense">Expense Only</option>
+            </select>
+          </form>
+          <table>
+            <thead>
+              <tr>
+                <th>DATE</th>
+                <th>DESCRIPTION</th>
+                <th>CATEGORY</th>
+                <th>AMOUNT</th>
+                <th>ACTIONS</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
       </div>
     </main>
     <script src="script.js"></script>

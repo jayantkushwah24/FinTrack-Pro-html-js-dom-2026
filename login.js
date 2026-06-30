@@ -3,7 +3,7 @@ const loginUsername = document.querySelector("#login-username");
 const loginPassword = document.querySelector("#login-password");
 
 let registeredUsers = JSON.parse(localStorage.getItem("registeredUsers")) || [];
-
+localStorage.setItem("isLoggedIn", "false");
 
 loginForm.addEventListener("submit", (event) => {
   event.preventDefault();

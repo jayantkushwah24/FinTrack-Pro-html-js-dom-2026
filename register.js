@@ -3,6 +3,7 @@ const registerUsername = document.querySelector("#register-username");
 const registerPassword = document.querySelector("#register-password");
 
 let registeredUsers = JSON.parse(localStorage.getItem("registeredUsers")) || [];
+localStorage.setItem("isLoggedIn", "false");
 
 registerForm.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -34,6 +35,8 @@ registerForm.addEventListener("submit", (event) => {
   localStorage.setItem("registeredUsers", JSON.stringify(registeredUsers));
 
   registerForm.reset();
+
+  alert("Registration successful! You can now log in.");
 
   window.location.href = "login.html";
 });
