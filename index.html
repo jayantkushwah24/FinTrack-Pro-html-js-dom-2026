@@ -13,7 +13,7 @@
       <div class="sidebar">
         <div class="company-name">
           <div class="logo">
-            <img src="Images/money.png" alt="logo" height="30" />
+            <img src="Assets/money.png" alt="logo" height="30" />
           </div>
           <div class="text">
             <div class="large-text">FinTrack Pro</div>
@@ -32,20 +32,24 @@
       <!-- Add Transactions form -->
       <form id="add-trans-form" style="display: none">
         <div>Add Transactions</div>
-        <div>x</div>
+        <div id="add-trans-back">x</div>
         <label for="type">Type</label><br />
-        <select name="type" id="select-trans-type">
+        <select name="type" id="add-trans-type">
           <option value="expense">Expense</option>
           <option value="income">Income</option></select
         ><br />
         <label for="desc">Description</label><br />
-        <input type="text" placeholder="e.g. Amazon, Salary, Coffee" /><br />
+        <input
+          type="text"
+          id="add-trans-desc"
+          placeholder="e.g. Amazon, Salary, Coffee"
+        /><br />
         <label for="amount">Amount</label>
-        <input type="number" /><br />
+        <input type="number" id="add-trans-amount" /><br />
         <label for="date">Date</label>
-        <input type="date" /><br />
+        <input type="date" id="add-trans-date" /><br />
         <label for="category">Category</label><br />
-        <select name="category" id="category">
+        <select name="category" id="add-trans-category">
           <option value="" disabled selected>Select a category</option>
           <option value="food-dining">Food & Dining</option>
           <option value="shopping">Shoppping</option>
@@ -56,7 +60,9 @@
           <option value="entertainment">Entertainment</option>
           <option value="others">Others</option></select
         ><br />
-        <button>Save Transaction</button>
+        <button type="submit" onclick="window.location.reload()">
+          Save Transaction
+        </button>
       </form>
 
       <!-- topbar -->
@@ -80,22 +86,30 @@
           <div class="current-bal-card">
             <div class="svg"></div>
             <div class="title">Current Balance</div>
-            <div id="display-balance">$0.00</div>
+            <div id="display-current-balance">
+              <span class="currency-symbol">$</span> 0.00
+            </div>
           </div>
           <div class="total-income-card">
             <div class="svg"></div>
             <div class="title">Total Income</div>
-            <div id="display-total-income">$0.00</div>
+            <div id="display-total-income">
+              <span class="currency-symbol">$</span> 0.00
+            </div>
           </div>
           <div class="total-expense-card">
             <div class="svg"></div>
             <div class="title">Total Expense</div>
-            <div id="display-total-expense">$0.00</div>
+            <div id="display-total-expense">
+              <span class="currency-symbol">$</span> 0.00
+            </div>
           </div>
           <div class="total-trans-card">
             <div class="svg"></div>
             <div class="title">Total Transactions</div>
-            <div id="display-total-trans">$0.00</div>
+            <div id="display-total-trans">
+              <span class="currency-symbol">$</span> 0.00
+            </div>
           </div>
         </div>
 
@@ -112,10 +126,13 @@
           <div class="heading">Preferences</div>
           <div class="dark-mode">
             <div class="text">Dark Mode</div>
+            <div class="cover" id="dark-theme-btn">
+              <div class="circle">button</div>
+            </div>
           </div>
           <hr />
           <div class="reset-all-data">
-            <button id="reset-btn">Reset All Data</button>
+            <button id="reset-all-btn">Reset All Data</button>
           </div>
         </div>
 
@@ -149,5 +166,7 @@
     <script src="JS Files/topbar.js"></script>
     <script src="JS Files/cashflowChart.js"></script>
     <script src="JS Files/addTransForm.js"></script>
+    <script src="JS Files/overview.js"></script>
+    <script src="JS Files/preference.js"></script>
   </body>
 </html>
