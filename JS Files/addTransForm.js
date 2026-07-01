@@ -1,3 +1,5 @@
+import { getKeyOfUserTrans, getTransactionHistory } from "./script.js";
+
 const addTransForm = document.querySelector("#add-trans-form");
 const addTransBack = document.querySelector("#add-trans-back");
 const addTransactionType = document.querySelector("#add-trans-type");
@@ -6,17 +8,13 @@ const addTransAmount = document.querySelector("#add-trans-amount");
 const addTransDate = document.querySelector("#add-trans-date");
 const addTransCategory = document.querySelector("#add-trans-category");
 
-let username = JSON.parse(localStorage.getItem("user")).username;
-let key = "transaction_" + username;
-let transactionHistory = [];
-
 addTransForm.addEventListener("submit", (event) => {
   event.preventDefault();
-
-  transactionHistory = JSON.parse(localStorage.getItem(key)) || [];
+  let key = getKeyOfUserTrans();
+  let transactionHistory = getTransactionHistory();
 
   let obj = {
-    id: crypto.randomUUID(),
+    id: transactionHistory.length + 1,
     type: addTransactionType.value,
     description: addTransDesc.value,
     amount: addTransAmount.value,
@@ -25,9 +23,7 @@ addTransForm.addEventListener("submit", (event) => {
   };
 
   transactionHistory.push(obj);
-
   localStorage.setItem(key, JSON.stringify(transactionHistory));
-
   addTransForm.reset();
 });
 

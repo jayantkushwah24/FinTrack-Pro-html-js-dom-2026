@@ -1,8 +1,8 @@
+import { getKeyOfUserTrans } from "./script.js";
+
 const darkThemeBtn = document.querySelector("#dark-theme-btn");
 const resetAllDataBtn = document.querySelector("#reset-all-btn");
 const body = document.querySelector("body");
-let username4 = JSON.parse(localStorage.getItem("user")).username;
-let key4 = "transaction_" + username4;
 
 darkThemeBtn.addEventListener("click", () => {
   let theme = localStorage.getItem("theme");
@@ -19,8 +19,10 @@ resetAllDataBtn.addEventListener("click", () => {
   const userConfirmed = confirm(
     "WARNING: This will delete all your transaction data permanently!",
   );
+
   if (userConfirmed) {
-    localStorage.removeItem(key4);
+    let key = getKeyOfUserTrans();
+    localStorage.removeItem(key);
     window.location.reload();
   }
 });

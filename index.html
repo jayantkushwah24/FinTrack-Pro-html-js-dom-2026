@@ -127,10 +127,10 @@
           <div class="dark-mode">
             <div class="text">Dark Mode</div>
             <div class="cover" id="dark-theme-btn">
-              <div class="circle">button</div>
+              <div class="circle">🌙</div>
             </div>
           </div>
-          <hr />
+
           <div class="reset-all-data">
             <button id="reset-all-btn">Reset All Data</button>
           </div>
@@ -138,15 +138,15 @@
 
         <!-- All Transactions card -->
         <div class="all-trans-card">
-          <form action="">
-            <input type="search" placeholder="search" />
-            <select name="filter" id="filter-types">
-              <option value="all">All Types</option>
+          <form>
+            <input type="search" placeholder="search" id="all-trans-search" />
+            <select name="filter" id="all-trans-filter">
+              <option value="all" selected>All Types</option>
               <option value="income">Income Only</option>
               <option value="expense">Expense Only</option>
             </select>
           </form>
-          <table>
+          <table class="all-trans-table">
             <thead>
               <tr>
                 <th>DATE</th>
@@ -156,17 +156,19 @@
                 <th>ACTIONS</th>
               </tr>
             </thead>
-            <tbody></tbody>
+            <tbody id="all-trans-table-body"></tbody>
           </table>
         </div>
       </div>
     </main>
-    <script src="JS Files/auth.js"></script>
-    <script src="JS Files/sidebar.js"></script>
-    <script src="JS Files/topbar.js"></script>
-    <script src="JS Files/cashflowChart.js"></script>
-    <script src="JS Files/addTransForm.js"></script>
-    <script src="JS Files/overview.js"></script>
-    <script src="JS Files/preference.js"></script>
+    <script type="module" src="JS Files/script.js"></script>
+    <script type="module" src="JS Files/auth.js"></script>
+    <script type="module" src="JS Files/sidebar.js"></script>
+    <script type="module" src="JS Files/topbar.js"></script>
+    <script type="module" src="JS Files/cashflowChart.js"></script>
+    <script type="module" src="JS Files/addTransForm.js"></script>
+    <script type="module" src="JS Files/overview.js"></script>
+    <script type="module" src="JS Files/preference.js"></script>
+    <script type="module" src="JS Files/allTransTable.js"></script>
   </body>
 </html>
