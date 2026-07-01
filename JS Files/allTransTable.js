@@ -6,7 +6,11 @@ import {
   addTransDesc,
   addTransForm,
 } from "./addTransForm.js";
-import { getKeyOfUserTrans, getTransactionHistory } from "./script.js";
+import {
+  getCurrency,
+  getKeyOfUserTrans,
+  getTransactionHistory,
+} from "./script.js";
 
 const allTransTypeFilter = document.querySelector("#all-trans-type-filter");
 const allTransSearch = document.querySelector("#all-trans-search");
@@ -20,7 +24,7 @@ function tableUI() {
                 <th>${transaction.date}</th>
                 <th>${transaction.description}</th>
                 <th>${transaction.category}</th>
-                <th>${transaction.amount}</th>
+                <th><span class="currency-symbol">${getCurrency()}</span>${transaction.amount}</th>
                 <th>
                     <span data-id="${transaction.id}" class="all-trans-edit-btn">✎</span>
                     <span data-id="${transaction.id}" class="all-trans-delete-btn">🗑</span>

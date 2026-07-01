@@ -27,7 +27,7 @@ loginForm.addEventListener("submit", (event) => {
       localStorage.setItem("theme", "light");
       localStorage.setItem(
         "user",
-        JSON.stringify({ username: usernameValue, currency: "usd" }),
+        JSON.stringify({ username: usernameValue, currency: "$" }),
       );
     } else {
       alert("Please enter correct password");

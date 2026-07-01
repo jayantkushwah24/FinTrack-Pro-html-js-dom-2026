@@ -82,11 +82,11 @@
             <input type="text" name="username" id="profile-username" />
             <label for="currency">Primary Currency</label>
             <select name="currency" id="profile-currency">
-              <option value="usd" selected>USD ($)</option>
-              <option value="inr">INR (₹)</option>
-              <option value="eur">EUR (€)</option>
-              <option value="gpg">GPG (£)</option>
-              <option value="jpy">JPY (¥)</option>
+              <option value="$" selected>USD ($)</option>
+              <option value="₹">INR (₹)</option>
+              <option value="€">EUR (€)</option>
+              <option value="£">GPG (£)</option>
+              <option value="¥">JPY (¥)</option>
             </select>
             <button id="profile-save-changes-btn">Save Changes</button>
           </form>
@@ -106,30 +106,25 @@
           <div class="current-bal-card">
             <div class="svg"></div>
             <div class="title">Current Balance</div>
-            <div id="display-current-balance">
-              <span class="currency-symbol">$</span> 0.00
-            </div>
+            <span class="currency-symbol">$</span>
+            <span id="display-current-balance">0.00</span>
           </div>
           <div class="total-income-card">
             <div class="svg"></div>
             <div class="title">Total Income</div>
-            <div id="display-total-income">
-              <span class="currency-symbol">$</span> 0.00
-            </div>
+            <span class="currency-symbol">$</span>
+            <span id="display-total-income">0.00</span>
           </div>
           <div class="total-expense-card">
             <div class="svg"></div>
             <div class="title">Total Expense</div>
-            <div id="display-total-expense">
-              <span class="currency-symbol">$</span> 0.00
-            </div>
+            <span class="currency-symbol">$</span>
+            <span id="display-total-expense">0.00</span>
           </div>
           <div class="total-trans-card">
             <div class="svg"></div>
             <div class="title">Total Transactions</div>
-            <div id="display-total-trans">
-              <span class="currency-symbol">$</span> 0.00
-            </div>
+            <span id="display-total-trans">0</span>
           </div>
         </div>
 

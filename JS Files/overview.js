@@ -1,4 +1,5 @@
 import {
+  getCurrency,
   getTotalExpense,
   getTotalIncome,
   getTransactionHistory,
@@ -13,6 +14,11 @@ function renderOverview() {
   const displayTotalTransaction = document.querySelector(
     "#display-total-trans",
   );
+  const displayCurrencySpan =
+    document.querySelectorAll(".currency-symbol") || [];
+  let currency = getCurrency();
+
+  displayCurrencySpan.forEach((c) => (c.textContent = currency));
 
   if (
     !displayCurrentBalance ||

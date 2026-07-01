@@ -12,6 +12,7 @@ addTransactionBtn.addEventListener("click", () => {
 navItemsDashboard.addEventListener("click", () => {
   mainPageContent.style.display = "inline";
   settingsCard.style.display = "none";
+  window.location.reload();
 });
 
 navItemsSettings.addEventListener("click", () => {
