@@ -18,4 +18,6 @@ profileDetailsForm.addEventListener("submit", (event) => {
   };
 
   localStorage.setItem("user", JSON.stringify(obj));
+
+  alert("Changes have been saved.")
 });

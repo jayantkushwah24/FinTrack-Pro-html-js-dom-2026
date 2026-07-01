@@ -1,11 +1,960 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'helvetica neue';
+/* ==========================================================
+   FinTrack Pro Dashboard
+   Part 1 - Global Styles, Layout & Dark Mode
+========================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
+
+/* ===============================
+   CSS Variables
+================================ */
+
+:root {
+  --sidebar-width: 270px;
+  --topbar-height: 75px;
+
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+
+  --success: #22c55e;
+  --danger: #ef4444;
+  --warning: #f59e0b;
+
+  --bg: #f5f7fb;
+  --card: #ffffff;
+  --sidebar: #0f172a;
+  --sidebar-hover: #1e293b;
+
+  --text: #111827;
+  --text-light: #6b7280;
+
+  --border: #e5e7eb;
+
+  --shadow: 0 10px 35px rgba(15, 23, 42, 0.08);
+  --radius: 18px;
 }
-html,
+
+/* ===============================
+   Dark Theme
+================================ */
+
+body.dark {
+  --bg: #0f172a;
+  --card: #1e293b;
+  --sidebar: #020617;
+  --sidebar-hover: #334155;
+
+  --text: #f8fafc;
+  --text-light: #94a3b8;
+
+  --border: #334155;
+
+  --shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+}
+
+/* ===============================
+   Reset
+================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-    height: 100%;
+  font-family: "Inter", sans-serif;
+
+  background: var(--bg);
+
+  color: var(--text);
+
+  overflow-x: hidden;
+
+  transition: 0.3s;
+}
+
+/* ===============================
+   Scrollbar
+================================ */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #9ca3af;
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #6b7280;
+}
+
+/* ===============================
+   Layout
+================================ */
+
+main {
+  width: 100%;
+}
+
+/* ==========================================================
+   SIDEBAR
+========================================================== */
+
+.sidebar {
+  position: fixed;
+
+  top: 0;
+
+  left: 0;
+
+  width: var(--sidebar-width);
+
+  height: 100vh;
+
+  background: var(--sidebar);
+
+  color: white;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: space-between;
+
+  padding: 28px;
+
+  z-index: 1000;
+
+  overflow-y: auto;
+
+  box-shadow: 6px 0 30px rgba(0, 0, 0, 0.15);
+}
+
+.company-name {
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+}
+
+.logo {
+  width: 55px;
+  height: 55px;
+
+  background: white;
+
+  border-radius: 15px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+}
+
+.large-text {
+  font-size: 21px;
+
+  font-weight: 700;
+}
+
+.small-text {
+  color: #94a3b8;
+
+  font-size: 13px;
+
+  margin-top: 4px;
+}
+
+/* Navigation */
+
+.nav-items {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 14px;
+
+  margin-top: 55px;
+}
+
+.nav-items div {
+  padding: 15px 18px;
+
+  border-radius: 12px;
+
+  cursor: pointer;
+
+  transition: 0.25s;
+
+  font-weight: 500;
+}
+
+.nav-items div:hover {
+  background: var(--sidebar-hover);
+
+  transform: translateX(6px);
+}
+
+.sidebar button {
+  width: 100%;
+
+  border: none;
+
+  padding: 15px;
+
+  border-radius: 14px;
+
+  background: var(--primary);
+
+  color: white;
+
+  cursor: pointer;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  transition: 0.25s;
+}
+
+.sidebar button:hover {
+  background: var(--primary-hover);
+}
+
+/* ==========================================================
+   TOPBAR
+========================================================== */
+
+.topbar {
+  position: fixed;
+
+  top: 0;
+
+  left: var(--sidebar-width);
+
+  width: calc(100% - var(--sidebar-width));
+
+  height: var(--topbar-height);
+
+  background: var(--card);
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  padding: 0 35px;
+
+  border-bottom: 1px solid var(--border);
+
+  box-shadow: var(--shadow);
+
+  z-index: 900;
+
+  transition: 0.3s;
+}
+
+.username {
+  font-size: 22px;
+
+  font-weight: 700;
+}
+
+.topbar button {
+  border: none;
+
+  padding: 12px 22px;
+
+  border-radius: 12px;
+
+  background: var(--danger);
+
+  color: white;
+
+  cursor: pointer;
+
+  transition: 0.25s;
+}
+
+.topbar button:hover {
+  transform: translateY(-2px);
+}
+
+/* ==========================================================
+   MAIN CONTENT
+========================================================== */
+
+#main-page-content {
+  margin-left: var(--sidebar-width);
+
+  margin-top: var(--topbar-height);
+
+  width: calc(100% - var(--sidebar-width));
+
+  min-height: calc(100vh - var(--topbar-height));
+
+  padding: 35px;
+
+  overflow-x: hidden;
+}
+
+.page-header {
+  margin-bottom: 35px;
+}
+
+.page-header .large-text {
+  font-size: 34px;
+
+  font-weight: 800;
+}
+
+.page-header .small-text {
+  color: var(--text-light);
+
+  margin-top: 6px;
+}
+
+/* ==========================================================
+   Shared Card Style
+========================================================== */
+
+.overview-cards > div,
+.analysis-chart-card,
+.preference-card,
+.all-trans-card {
+  background: var(--card);
+
+  border-radius: var(--radius);
+
+  box-shadow: var(--shadow);
+
+  transition: 0.3s;
+}
+
+.overview-cards > div:hover,
+.analysis-chart-card:hover,
+.preference-card:hover,
+.all-trans-card:hover {
+  transform: translateY(-4px);
+}
+
+/* ==========================================================
+   Popup Forms
+========================================================== */
+
+#add-trans-form,
+#settings-card {
+  position: fixed;
+
+  top: 50%;
+
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  width: 480px;
+
+  max-width: 95%;
+
+  background: var(--card);
+
+  color: var(--text);
+
+  border-radius: 20px;
+
+  padding: 30px;
+
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.35);
+
+  z-index: 3000;
+}
+
+/* ==========================================================
+   Utility Classes
+========================================================== */
+
+button {
+  transition: 0.25s;
+}
+
+button:hover {
+  transform: translateY(-2px);
+}
+
+input,
+select {
+  outline: none;
+
+  transition: 0.2s;
+}
+
+input:focus,
+select:focus {
+  border-color: var(--primary);
+
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+}
+
+/* ==========================================================
+   Responsive
+========================================================== */
+
+@media (max-width: 992px) {
+  :root {
+    --sidebar-width: 0px;
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .topbar {
+    left: 0;
+
     width: 100%;
+  }
+
+  #main-page-content {
+    margin-left: 0;
+
+    width: 100%;
+
+    padding: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .topbar {
+    padding: 0 18px;
+  }
+
+  .username {
+    font-size: 18px;
+  }
+}
+
+/* ==========================================================
+   FinTrack Pro Dashboard
+   Part 2 - Components
+==========================================================*/
+
+/* ==========================================================
+   OVERVIEW CARDS
+==========================================================*/
+
+.overview-cards {
+  display: grid;
+
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+
+  gap: 24px;
+
+  margin-bottom: 30px;
+}
+
+.overview-cards > div {
+  padding: 28px;
+
+  position: relative;
+
+  overflow: hidden;
+
+  border: 1px solid var(--border);
+}
+
+.overview-cards > div::after {
+  content: "";
+
+  position: absolute;
+
+  width: 180px;
+  height: 180px;
+
+  right: -70px;
+  top: -70px;
+
+  border-radius: 50%;
+
+  opacity: 0.08;
+}
+
+.current-bal-card::after {
+  background: var(--primary);
+}
+
+.total-income-card::after {
+  background: var(--success);
+}
+
+.total-expense-card::after {
+  background: var(--danger);
+}
+
+.total-trans-card::after {
+  background: var(--warning);
+}
+
+.overview-cards .title {
+  color: var(--text-light);
+
+  margin-bottom: 18px;
+
+  font-weight: 500;
+}
+
+.overview-cards span {
+  font-size: 2rem;
+
+  font-weight: 700;
+}
+
+.currency-symbol {
+  margin-right: 4px;
+}
+
+/* ==========================================================
+   CHART CARD
+==========================================================*/
+
+.analysis-chart-card {
+  margin-top: 30px;
+
+  padding: 30px;
+
+  border: 1px solid var(--border);
+}
+
+.heading {
+  font-size: 22px;
+
+  font-weight: 700;
+
+  margin-bottom: 20px;
+}
+
+.chart {
+  width: 100%;
+
+  height: 400px;
+}
+
+/* ==========================================================
+   PREFERENCE CARD
+==========================================================*/
+
+.preference-card {
+  margin-top: 30px;
+
+  padding: 30px;
+
+  border: 1px solid var(--border);
+}
+
+.dark-mode {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  margin-top: 20px;
+}
+
+.dark-mode .text {
+  font-weight: 600;
+}
+
+/* Toggle */
+
+.cover {
+  width: 70px;
+
+  height: 36px;
+
+  background: #d1d5db;
+
+  border-radius: 30px;
+
+  cursor: pointer;
+
+  padding: 4px;
+
+  display: flex;
+
+  align-items: center;
+
+  transition: 0.3s;
+}
+
+.circle {
+  width: 28px;
+
+  height: 28px;
+
+  border-radius: 50%;
+
+  background: white;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  transition: 0.3s;
+
+  font-size: 15px;
+}
+
+body.dark .cover {
+  background: var(--primary);
+}
+
+body.dark .circle {
+  transform: translateX(34px);
+}
+
+.reset-all-data {
+  margin-top: 30px;
+}
+
+.reset-all-data button {
+  width: 100%;
+
+  border: none;
+
+  padding: 14px;
+
+  border-radius: 12px;
+
+  background: var(--danger);
+
+  color: white;
+
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+/* ==========================================================
+   TRANSACTIONS
+==========================================================*/
+
+.all-trans-card {
+  margin-top: 30px;
+
+  padding: 30px;
+
+  border: 1px solid var(--border);
+
+  overflow-x: auto;
+}
+
+.all-trans-card h1 {
+  margin-bottom: 20px;
+}
+
+#all-trans-search,
+#all-trans-type-filter {
+  padding: 13px 16px;
+
+  border-radius: 12px;
+
+  border: 1px solid var(--border);
+
+  background: var(--card);
+
+  color: var(--text);
+
+  margin-bottom: 20px;
+}
+
+#all-trans-search {
+  width: 320px;
+
+  max-width: 100%;
+
+  margin-right: 12px;
+}
+
+/* ==========================================================
+   TABLE
+==========================================================*/
+
+.all-trans-table {
+  width: 100%;
+
+  border-collapse: collapse;
+
+  min-width: 750px;
+}
+
+.all-trans-table thead {
+  background: rgba(37, 99, 235, 0.08);
+}
+
+.all-trans-table th {
+  padding: 18px;
+
+  text-align: left;
+
+  color: var(--text);
+
+  font-size: 14px;
+
+  letter-spacing: 0.5px;
+}
+
+.all-trans-table td {
+  padding: 18px;
+
+  border-bottom: 1px solid var(--border);
+}
+
+.all-trans-table tbody tr {
+  transition: 0.25s;
+}
+
+.all-trans-table tbody tr:hover {
+  background: rgba(37, 99, 235, 0.05);
+}
+
+/* ==========================================================
+   BUTTONS INSIDE TABLE
+==========================================================*/
+
+table button {
+  border: none;
+
+  padding: 8px 14px;
+
+  border-radius: 8px;
+
+  cursor: pointer;
+
+  color: white;
+
+  font-weight: 600;
+
+  margin-right: 6px;
+}
+
+.edit-btn {
+  background: var(--primary);
+}
+
+.delete-btn {
+  background: var(--danger);
+}
+
+/* ==========================================================
+   FORMS
+==========================================================*/
+
+#add-trans-form h2 {
+  margin-bottom: 20px;
+}
+
+#add-trans-form label,
+#profile-details-form label {
+  display: block;
+
+  margin-top: 14px;
+
+  margin-bottom: 8px;
+
+  font-weight: 600;
+}
+
+#add-trans-form input,
+#add-trans-form select,
+#profile-details-form input,
+#profile-details-form select {
+  width: 100%;
+
+  padding: 14px;
+
+  border-radius: 12px;
+
+  border: 1px solid var(--border);
+
+  background: var(--card);
+
+  color: var(--text);
+}
+
+#add-trans-form button,
+#profile-save-changes-btn {
+  width: 100%;
+
+  margin-top: 20px;
+
+  border: none;
+
+  background: var(--primary);
+
+  color: white;
+
+  padding: 15px;
+
+  border-radius: 12px;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+#add-trans-back {
+  position: absolute;
+
+  top: 18px;
+
+  right: 22px;
+
+  cursor: pointer;
+
+  font-size: 22px;
+
+  font-weight: bold;
+}
+
+/* ==========================================================
+   SETTINGS
+==========================================================*/
+
+#settings-card h1 {
+  margin-bottom: 10px;
+}
+
+#settings-card p {
+  color: var(--text-light);
+
+  margin-bottom: 25px;
+}
+
+.profile-details-card {
+  margin-top: 15px;
+}
+
+/* ==========================================================
+   ANIMATIONS
+==========================================================*/
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+
+    transform: translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+}
+
+.overview-cards,
+.analysis-chart-card,
+.preference-card,
+.all-trans-card {
+  animation: fadeUp 0.45s ease;
+}
+
+/* ==========================================================
+   RESPONSIVE
+==========================================================*/
+
+@media (max-width: 900px) {
+  .overview-cards {
+    grid-template-columns: 1fr;
+  }
+
+  #all-trans-search {
+    width: 100%;
+
+    margin-right: 0;
+  }
+
+  #all-trans-type-filter {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .heading {
+    font-size: 18px;
+  }
+
+  .overview-cards span {
+    font-size: 1.5rem;
+  }
+
+  .analysis-chart-card,
+  .preference-card,
+  .all-trans-card {
+    padding: 20px;
+  }
+}
+
+.action-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.action-buttons button {
+  width: 38px;
+  height: 38px;
+
+  border: none;
+
+  border-radius: 10px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+
+  transition: 0.25s;
+}
+
+.edit-btn {
+  background: #dbeafe;
+  color: #2563eb;
+}
+
+.edit-btn:hover {
+  background: #2563eb;
+  color: white;
+
+  transform: translateY(-2px);
+}
+
+.delete-btn {
+  background: #fee2e2;
+  color: #ef4444;
+}
+
+.delete-btn:hover {
+  background: #ef4444;
+  color: white;
+
+  transform: translateY(-2px);
+}
+
+.material-symbols-outlined {
+  font-size: 20px;
 }

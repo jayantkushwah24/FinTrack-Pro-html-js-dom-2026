@@ -20,16 +20,25 @@ let transactionHistory = getTransactionHistory();
 function tableUI() {
   allTransTableBody.innerHTML = "";
   transactionHistory.forEach((transaction) => {
-    allTransTableBody.innerHTML += `<tr>
-                <th>${transaction.date}</th>
-                <th>${transaction.description}</th>
-                <th>${transaction.category}</th>
-                <th><span class="currency-symbol">${getCurrency()}</span>${transaction.amount}</th>
-                <th>
-                    <span data-id="${transaction.id}" class="all-trans-edit-btn">✎</span>
-                    <span data-id="${transaction.id}" class="all-trans-delete-btn">🗑</span>
-                </th>
-              </tr>`;
+    allTransTableBody.innerHTML += `
+      <tr>
+          <td>${transaction.date}</td>
+          <td>${transaction.description}</td>
+          <td>${transaction.category}</td>
+          <td>
+              <span class="currency-symbol">${getCurrency()}</span>${transaction.amount}
+          </td>
+          <td class="action-buttons">
+              <button class="edit-btn all-trans-edit-btn" data-id="${transaction.id}">
+                  <span class="material-symbols-outlined">edit</span>
+              </button>
+
+              <button class="delete-btn all-trans-delete-btn" data-id="${transaction.id}">
+                  <span class="material-symbols-outlined">delete</span>
+              </button>
+          </td>
+      </tr>
+      `;
   });
 }
 tableUI();
