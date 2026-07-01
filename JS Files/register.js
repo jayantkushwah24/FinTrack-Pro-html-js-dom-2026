@@ -1,10 +1,8 @@
-import { getRegisteredUser } from "./script.js";
-
 const registerForm = document.querySelector("#register-form");
 const registerUsername = document.querySelector("#register-username");
 const registerPassword = document.querySelector("#register-password");
 
-let registeredUsers = getRegisteredUser();
+let registeredUsers = JSON.parse(localStorage.getItem("registeredUsers")) || [];
 localStorage.setItem("isLoggedIn", "false");
 
 registerForm.addEventListener("submit", (event) => {
@@ -33,12 +31,8 @@ registerForm.addEventListener("submit", (event) => {
   };
 
   registeredUsers.push(obj);
-
   localStorage.setItem("registeredUsers", JSON.stringify(registeredUsers));
-
   registerForm.reset();
-
   alert("Registration successful! You can now log in.");
-
   window.location.href = "login.html";
 });

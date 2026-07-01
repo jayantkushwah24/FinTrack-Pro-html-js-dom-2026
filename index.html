@@ -21,8 +21,8 @@
           </div>
         </div>
         <div class="nav-items">
-          <div class="dashboard">Dashboard</div>
-          <div class="dashboard">Settings</div>
+          <div class="dashboard" id="nav-items-dashboard">Dashboard</div>
+          <div class="settings" id="nav-items-settings">Settings</div>
         </div>
         <div class="button">
           <button id="add-trans-btn">+ Add Transactions</button>
@@ -60,9 +60,7 @@
           <option value="entertainment">Entertainment</option>
           <option value="others">Others</option></select
         ><br />
-        <button type="submit" onclick="window.location.reload()">
-          Save Transaction
-        </button>
+        <button type="submit">Save Transaction</button>
       </form>
 
       <!-- topbar -->
@@ -73,8 +71,30 @@
         </div>
       </nav>
 
+      <!-- Settings -->
+      <div id="settings-card" style="display: none">
+        <h1>Settings</h1>
+        <p>Manage your account profile and app formatting.</p>
+        <div class="profile-details-card">
+          <h2>Profile Details</h2>
+          <form id="profile-details-form">
+            <label for="username">Full Name</label>
+            <input type="text" name="username" id="profile-username" />
+            <label for="currency">Primary Currency</label>
+            <select name="currency" id="profile-currency">
+              <option value="usd" selected>USD ($)</option>
+              <option value="inr">INR (₹)</option>
+              <option value="eur">EUR (€)</option>
+              <option value="gpg">GPG (£)</option>
+              <option value="jpy">JPY (¥)</option>
+            </select>
+            <button id="profile-save-changes-btn">Save Changes</button>
+          </form>
+        </div>
+      </div>
+
       <!-- main content -->
-      <div class="main-content">
+      <div id="main-page-content">
         <!-- page heading -->
         <div class="page-header">
           <div class="large-text">Financial Overview</div>
@@ -138,14 +158,19 @@
 
         <!-- All Transactions card -->
         <div class="all-trans-card">
-          <form>
-            <input type="search" placeholder="search" id="all-trans-search" />
-            <select name="filter" id="all-trans-filter">
-              <option value="all" selected>All Types</option>
-              <option value="income">Income Only</option>
-              <option value="expense">Expense Only</option>
-            </select>
-          </form>
+          <h1>All Transactions</h1>
+
+          <input
+            type="text"
+            placeholder="Type to search..."
+            id="all-trans-search"
+          />
+          <select name="filter" id="all-trans-type-filter">
+            <option value="all" selected>All Types</option>
+            <option value="income">Income Only</option>
+            <option value="expense">Expense Only</option>
+          </select>
+
           <table class="all-trans-table">
             <thead>
               <tr>
@@ -170,5 +195,6 @@
     <script type="module" src="JS Files/overview.js"></script>
     <script type="module" src="JS Files/preference.js"></script>
     <script type="module" src="JS Files/allTransTable.js"></script>
+    <script type="module" src="JS Files/settings.js"></script>
   </body>
 </html>

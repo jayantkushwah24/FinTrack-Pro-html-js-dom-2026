@@ -44,8 +44,3 @@ export function getTotalExpense() {
   return totalExpense;
 }
 
-export function getRegisteredUser() {
-  let registeredUsers =
-    JSON.parse(localStorage.getItem("registeredUsers")) || [];
-  return registeredUsers;
-}

@@ -1,10 +1,8 @@
-import { getRegisteredUser } from "./script.js";
-
 const loginForm = document.querySelector("#login-form");
 const loginUsername = document.querySelector("#login-username");
 const loginPassword = document.querySelector("#login-password");
 
-let registeredUsers = getRegisteredUser();
+let registeredUsers = JSON.parse(localStorage.getItem("registeredUsers")) || [];
 localStorage.setItem("isLoggedIn", "false");
 
 loginForm.addEventListener("submit", (event) => {
@@ -29,7 +27,7 @@ loginForm.addEventListener("submit", (event) => {
       localStorage.setItem("theme", "light");
       localStorage.setItem(
         "user",
-        JSON.stringify({ username: usernameValue, currency: "$" }),
+        JSON.stringify({ username: usernameValue, currency: "usd" }),
       );
     } else {
       alert("Please enter correct password");
