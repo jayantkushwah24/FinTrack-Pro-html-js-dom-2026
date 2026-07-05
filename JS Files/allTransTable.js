@@ -97,14 +97,16 @@ allTransTypeFilter.addEventListener("change", (event) => {
 });
 
 document.addEventListener("click", (event) => {
-  const target = event.target;
-  const id = target.getAttribute("data-id");
+  const btn = event.target.closest("button");
+  if (!btn) return;
 
-  if (target.classList.contains("all-trans-edit-btn")) {
+  const id = btn.dataset.id;
+
+  if (btn.classList.contains("all-trans-edit-btn")) {
     editTransaction(id);
   }
 
-  if (target.classList.contains("all-trans-delete-btn")) {
+  if (btn.classList.contains("all-trans-delete-btn")) {
     deleteTransaction(id);
   }
 });
